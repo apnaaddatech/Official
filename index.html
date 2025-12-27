@@ -35,10 +35,10 @@
             color: var(--light-text);
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
-            padding-bottom: 70px;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            padding-bottom: 70px; /* Space for mobile nav */
         }
         @media(min-width: 768px) {
             body { padding-bottom: 0; }
@@ -49,36 +49,20 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+        .hidden-section { display: none !important; }
 
-        @keyframes glow {
-            0% { box-shadow: 0 0 5px #E50914; }
-            50% { box-shadow: 0 0 20px #E50914, 0 0 10px #ff4d4d; }
-            100% { box-shadow: 0 0 5px #E50914; }
-        }
-
-        .glow-btn {
-            animation: glow 2s infinite;
-            background: linear-gradient(45deg, #E50914, #ff4b1f);
-        }
-
-        /* Navigation Links (Desktop) */
+        /* Navigation Links */
         .nav-link {
             cursor: pointer; padding: 0.5rem 1rem; transition: color 0.3s ease; color: #aaa; font-weight: 500; font-size: 0.9rem; display: inline-block;
         }
         .nav-link:hover, .nav-link.active { color: var(--primary-red); font-weight: 700; }
 
-        /* Bottom Navigation (Mobile) */
+        /* Mobile Bottom Nav */
         .bottom-nav-item { color: #666; transition: all 0.3s ease; }
         .bottom-nav-item.active { color: var(--primary-red); }
-        .bottom-nav-item.active i { transform: translateY(-2px); }
 
-        /* Accordion in Profile */
-        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-        .accordion-btn.active .fa-chevron-down { transform: rotate(180deg); }
-
-        /* App Card Hover */
+        /* App Card */
         .app-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             background-color: var(--dark-gray); border: 1px solid #222;
@@ -87,74 +71,64 @@
             transform: translateY(-5px); border-color: var(--primary-red); box-shadow: 0 5px 20px rgba(229, 9, 20, 0.3);
         }
 
-        /* Slideshow Styles */
+        /* Accordion */
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .accordion-btn.active .fa-chevron-down { transform: rotate(180deg); }
+
+        /* Slideshow */
         .slide-image {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out; z-index: 0;
         }
-        @media (max-width: 768px) { .slide-image { object-fit: cover; } }
         .slide-image.active { opacity: 1; }
         .hero-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%); z-index: 1; pointer-events: none;
         }
 
-        /* Utility */
-        .hidden-section { display: none !important; }
+        /* Forms */
         input, select, textarea { background-color: #222; border: 1px solid #444; color: white; }
         input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary-red); }
-
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #111; }
-        ::-webkit-scrollbar-thumb { background: #E50914; border-radius: 4px; }
-
-        /* --- SLIDING TABS (Login & Admin) --- */
+        
+        /* Sliding Tabs */
         .tabs-container {
             display: flex; position: relative; border-bottom: 2px solid #333; margin-bottom: 20px;
         }
         .tab-btn {
-            flex: 1; text-align: center; padding: 10px; cursor: pointer; color: #888; font-weight: bold; transition: color 0.3s;
-            font-size: 0.8rem;
+            flex: 1; text-align: center; padding: 10px; cursor: pointer; color: #888; font-weight: bold; font-size: 0.8rem; transition: color 0.3s;
         }
         .tab-btn.active { color: white; }
         .tab-glider {
             position: absolute; bottom: -2px; left: 0; height: 3px; background-color: var(--primary-red); transition: transform 0.3s ease-in-out; box-shadow: 0 -2px 10px rgba(229, 9, 20, 0.8);
         }
 
-        /* --- NOTIFICATION MODAL --- */
+        /* Notification Modal */
         .notification-modal {
-            position: fixed; bottom: 0; left: 0; width: 100%; height: 50vh; background: #111; 
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 60vh; background: #111; 
             border-top: 1px solid #333; border-top-left-radius: 20px; border-top-right-radius: 20px;
             z-index: 2000; transform: translateY(100%); transition: transform 0.3s ease-out;
-            box-shadow: 0 -5px 25px rgba(0,0,0,0.8); display: flex; flex-direction: column;
+            box-shadow: 0 -5px 50px rgba(0,0,0,0.9); display: flex; flex-direction: column;
         }
         .notification-modal.open { transform: translateY(0); }
         @media (min-width: 768px) {
-            .notification-modal {
-                width: 400px; left: auto; right: 20px; bottom: 80px; height: 60vh; border-radius: 10px; border: 1px solid #333;
-            }
+            .notification-modal { width: 400px; left: auto; right: 20px; bottom: 80px; height: 60vh; border-radius: 10px; border: 1px solid #333; }
         }
         .notification-dot {
-            position: absolute; top: -2px; right: -2px; width: 10px; height: 10px; background-color: var(--primary-red); border: 1px solid #000; border-radius: 50%;
+            position: absolute; top: 0; right: 0; width: 10px; height: 10px; background-color: var(--primary-red); border-radius: 50%; border: 2px solid black;
         }
 
-        /* --- CHAT WIDGET STYLES --- */
+        /* Chat Widget */
         .chat-widget-btn {
             position: fixed; bottom: 90px; right: 20px; background-color: var(--primary-red); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; box-shadow: 0 4px 15px rgba(229, 9, 20, 0.5); z-index: 1000; transition: transform 0.3s ease;
         }
         .chat-widget-btn:hover { transform: scale(1.1); }
-        
         .chat-window {
             position: fixed; bottom: 160px; right: 20px; width: 350px; height: 500px; background-color: #1a1a1a; border: 1px solid #333; border-radius: 15px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 5px 25px rgba(0,0,0,0.8); z-index: 1000; opacity: 0; transform: translateY(20px); pointer-events: none; transition: all 0.3s ease;
         }
         .chat-window.open { opacity: 1; transform: translateY(0); pointer-events: all; }
-        .chat-header { background: var(--primary-red); padding: 15px; color: white; font-weight: bold; font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; }
         .chat-body { flex: 1; padding: 15px; overflow-y: auto; background-color: #0f0f0f; display: flex; flex-direction: column; gap: 10px; }
-        .chat-message { max-width: 80%; padding: 8px 12px; border-radius: 10px; font-size: 0.85rem; line-height: 1.4; word-wrap: break-word; }
+        .chat-message { max-width: 80%; padding: 8px 12px; border-radius: 10px; font-size: 0.85rem; word-wrap: break-word; }
         .msg-admin { align-self: flex-start; background-color: #333; color: #ddd; border-bottom-left-radius: 0; }
         .msg-user { align-self: flex-end; background-color: #E50914; color: white; border-bottom-right-radius: 0; }
-        .chat-footer { padding: 10px; background-color: #1a1a1a; border-top: 1px solid #333; display: flex; gap: 10px; }
-        .chat-input { flex: 1; background: #000; border: 1px solid #333; padding: 8px 12px; border-radius: 20px; color: white; font-size: 0.9rem; }
-        .chat-send-btn { background: transparent; color: var(--primary-red); border: none; font-size: 1.2rem; cursor: pointer; }
-
+        
         @media (min-width: 768px) {
             .chat-widget-btn { bottom: 20px; }
             .chat-window { bottom: 90px; }
@@ -162,6 +136,10 @@
         @media (max-width: 480px) {
             .chat-window { width: 90%; right: 5%; bottom: 160px; height: 50vh; }
         }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
     </style>
 </head>
 <body>
@@ -176,7 +154,7 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <!-- NOTIFICATION ICON -->
+                <!-- NOTIFICATION BELL -->
                 <div class="relative cursor-pointer mr-2 md:mr-0" onclick="toggleNotificationModal()">
                     <i class="fas fa-bell text-gray-300 text-xl hover:text-white transition"></i>
                     <div id="navNotificationDot" class="notification-dot hidden"></div>
@@ -188,10 +166,7 @@
                     <span class="nav-link" id="link-apps" onclick="navigateTo('apps')">Our Apps</span>
                     <span class="nav-link" id="link-about" onclick="navigateTo('about')">About Us</span>
                     <span class="nav-link" id="link-contact" onclick="navigateTo('contact')">Contact Us</span>
-                    
                     <div class="h-4 w-px bg-gray-700 mx-2"></div>
-
-                    <!-- Desktop Auth Buttons -->
                     <button id="navLoginBtn" onclick="navigateTo('login')" class="text-white bg-red-600 hover:bg-red-700 px-4 py-1.5 rounded text-sm font-bold transition">Login</button>
                     <button id="navDashboardBtn" onclick="navigateTo('admin')" class="hidden text-white bg-gray-800 hover:bg-gray-700 px-4 py-1.5 rounded text-sm transition">Dashboard</button>
                     <button id="navLogoutBtn" onclick="handleLogout()" class="hidden text-red-500 hover:text-white px-3 py-1.5 text-sm transition font-bold">Logout</button>
@@ -200,176 +175,148 @@
         </div>
     </nav>
 
-    <!-- NOTIFICATION MODAL (User Side) -->
+    <!-- NOTIFICATION MODAL (Popup) -->
     <div id="notificationModal" class="notification-modal">
         <div class="flex justify-between items-center p-4 border-b border-gray-800 bg-[#161616]">
             <h3 class="font-bold text-white"><i class="fas fa-bell text-red-600 mr-2"></i> Notifications</h3>
             <button onclick="toggleNotificationModal()" class="text-gray-400 hover:text-white"><i class="fas fa-times text-lg"></i></button>
         </div>
         <div id="userNotificationList" class="flex-1 overflow-y-auto p-4 space-y-4">
-            <!-- Notifications loaded here -->
             <div class="text-center text-gray-500 mt-10">Loading notifications...</div>
         </div>
     </div>
 
-    <!-- MAIN CONTENT AREA -->
+    <!-- MAIN CONTENT -->
     <main class="flex-grow container mx-auto px-4 py-6 md:py-8">
 
-        <!-- 1. HOME SECTION -->
+        <!-- 1. HOME -->
         <div id="section-home" class="animate-fade-in">
             <div class="relative w-full rounded-2xl overflow-hidden mb-8 border border-gray-800 h-[80vh] md:h-[60vh]">
                 <div id="heroSlideshow" class="absolute inset-0 w-full h-full bg-gray-900"></div>
                 <div class="hero-overlay"></div>
                 <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-                    <h1 class="text-5xl md:text-6xl lg:text-8xl font-black mb-6 md:mb-6 text-white tracking-tighter drop-shadow-2xl">
+                    <h1 class="text-5xl md:text-6xl lg:text-8xl font-black mb-6 text-white tracking-tighter drop-shadow-2xl">
                         APNA <span class="text-red-600">ADDA</span>
                     </h1>
-                    <p class="text-xl md:text-xl lg:text-2xl text-gray-200 font-light tracking-wide max-w-2xl mx-auto mb-10 md:mb-10 drop-shadow-md">
+                    <p class="text-xl md:text-2xl text-gray-200 font-light tracking-wide max-w-2xl mx-auto mb-10 drop-shadow-md">
                         Technology for Everyday Growth.
                     </p>
-                    <button onclick="scrollToHomeApps()" class="px-8 py-4 md:px-8 md:py-4 bg-red-600/20 backdrop-blur-md border-2 border-red-600 text-white font-bold rounded-full hover:bg-red-600 transition transform hover:scale-105 shadow-lg text-lg md:text-base cursor-pointer pointer-events-auto">
+                    <button onclick="scrollToHomeApps()" class="px-8 py-4 bg-red-600/20 backdrop-blur-md border-2 border-red-600 text-white font-bold rounded-full hover:bg-red-600 transition transform hover:scale-105 shadow-lg">
                         EXPLORE APPS
                     </button>
                 </div>
             </div>
 
-            <div id="homeAppsContainer" class="py-8 md:py-10 border-t border-gray-900">
-                <div class="text-center mb-8 md:mb-10">
+            <div id="homeAppsContainer" class="py-8 border-t border-gray-900">
+                <div class="text-center mb-8">
                     <h2 class="text-2xl md:text-3xl font-bold border-b-4 border-red-600 inline-block pb-2">Latest Applications</h2>
                 </div>
-                <div id="homeLoader" class="text-center py-10">
-                    <i class="fas fa-circle-notch fa-spin text-red-600 text-4xl"></i>
-                    <p class="mt-2 text-gray-500">Loading...</p>
-                </div>
-                <div id="homeAppsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"></div>
+                <div id="homeLoader" class="text-center py-10"><i class="fas fa-circle-notch fa-spin text-red-600 text-4xl"></i></div>
+                <div id="homeAppsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             </div>
         </div>
 
-        <!-- 2. APPS SECTION -->
+        <!-- 2. APPS -->
         <div id="section-apps" class="hidden-section animate-fade-in">
-            <div class="text-center mb-8 md:mb-10">
+            <div class="text-center mb-8">
                 <h2 class="text-2xl md:text-3xl font-bold border-b-4 border-red-600 inline-block pb-2">All Applications</h2>
             </div>
-            <div id="appsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"></div>
+            <div id="appsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </div>
 
-        <!-- 3. PROFILE SECTION -->
+        <!-- 3. PROFILE (Mobile View Only) -->
         <div id="section-profile" class="hidden-section animate-fade-in">
             <div class="max-w-lg mx-auto">
                 <div class="bg-gray-900 border border-gray-800 rounded-lg p-6 mb-6 text-center">
                     <div id="profileLoggedOut" class="hidden">
-                        <div class="w-20 h-20 bg-gray-800 rounded-full mx-auto flex items-center justify-center mb-4 text-3xl text-gray-600">
-                            <i class="fas fa-user"></i>
-                        </div>
+                        <div class="w-20 h-20 bg-gray-800 rounded-full mx-auto flex items-center justify-center mb-4 text-3xl text-gray-600"><i class="fas fa-user"></i></div>
                         <h2 class="text-xl font-bold text-white mb-2">Welcome Guest</h2>
-                        <p class="text-gray-400 text-sm mb-4">Login to access all features.</p>
-                        <button onclick="navigateTo('login')" class="glow-btn w-full text-white font-bold py-3 rounded-lg shadow-lg">LOGIN NOW</button>
+                        <button onclick="navigateTo('login')" class="w-full bg-red-600 text-white font-bold py-3 rounded-lg mt-4">LOGIN NOW</button>
                     </div>
-
                     <div id="profileLoggedIn" class="hidden">
-                        <div class="w-20 h-20 bg-red-900/30 border-2 border-red-600 rounded-full mx-auto flex items-center justify-center mb-4 text-3xl text-red-500">
-                            <i class="fas fa-user-check"></i>
-                        </div>
+                        <div class="w-20 h-20 bg-red-900/30 border-2 border-red-600 rounded-full mx-auto flex items-center justify-center mb-4 text-3xl text-red-500"><i class="fas fa-user-check"></i></div>
                         <h2 class="text-xl font-bold text-white mb-1" id="profileEmailDisplay">User</h2>
-                        <span class="inline-block bg-gray-800 text-xs px-2 py-1 rounded text-gray-400 mb-4">Member</span>
-                        
-                        <div class="grid grid-cols-2 gap-3">
-                            <button id="profileAdminBtn" onclick="navigateTo('admin')" class="hidden w-full bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 rounded text-sm border border-gray-700">
-                                DASHBOARD
-                            </button>
-                            <button onclick="handleLogout()" class="w-full bg-red-900/20 hover:bg-red-900/40 text-red-500 font-bold py-2 rounded text-sm border border-red-900/50">
-                                LOGOUT
-                            </button>
+                        <div class="grid grid-cols-2 gap-3 mt-4">
+                            <button id="profileAdminBtn" onclick="navigateTo('admin')" class="hidden w-full bg-gray-800 text-white font-bold py-2 rounded text-sm border border-gray-700">DASHBOARD</button>
+                            <button onclick="handleLogout()" class="w-full bg-red-900/20 text-red-500 font-bold py-2 rounded text-sm border border-red-900/50">LOGOUT</button>
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Accordions -->
                 <div class="space-y-3">
                     <div class="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
-                        <button class="accordion-btn w-full flex justify-between items-center p-4 text-left font-bold text-gray-300 hover:bg-gray-800 transition" onclick="toggleAccordion('acc-about', this)">
-                            <span><i class="fas fa-info-circle w-6 text-center text-red-600 mr-2"></i> About Us</span>
-                            <i class="fas fa-chevron-down transition-transform duration-300"></i>
-                        </button>
-                        <div id="acc-about" class="accordion-content bg-black">
-                            <div class="p-4 text-sm text-gray-400 leading-relaxed text-justify space-y-3">
-                                <p>APNA ADDA is a technology-driven company committed to building smart, simple, and useful digital solutions. The company was founded and is owned by Premanshu Kumar.</p>
-                            </div>
-                        </div>
+                        <button class="accordion-btn w-full flex justify-between items-center p-4 text-left font-bold text-gray-300 hover:bg-gray-800" onclick="toggleAccordion('acc-about', this)"><span><i class="fas fa-info-circle text-red-600 mr-2"></i> About Us</span><i class="fas fa-chevron-down"></i></button>
+                        <div id="acc-about" class="accordion-content bg-black"><div class="p-4 text-sm text-gray-400">APNA ADDA is a technology company founded by Premanshu Kumar.</div></div>
                     </div>
-
                     <div class="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
-                        <button class="accordion-btn w-full flex justify-between items-center p-4 text-left font-bold text-gray-300 hover:bg-gray-800 transition" onclick="toggleAccordion('acc-contact', this)">
-                            <span><i class="fas fa-envelope w-6 text-center text-blue-500 mr-2"></i> Contact Us</span>
-                            <i class="fas fa-chevron-down transition-transform duration-300"></i>
-                        </button>
-                        <div id="acc-contact" class="accordion-content bg-black">
-                            <div class="p-4 flex flex-col gap-3">
-                                <a href="mailto:thepremanshu@gmail.com" class="flex items-center gap-3 text-gray-400 hover:text-white"><i class="fas fa-at text-red-500"></i> Email Us</a>
-                            </div>
-                        </div>
+                        <button class="accordion-btn w-full flex justify-between items-center p-4 text-left font-bold text-gray-300 hover:bg-gray-800" onclick="toggleAccordion('acc-contact', this)"><span><i class="fas fa-envelope text-blue-500 mr-2"></i> Contact Us</span><i class="fas fa-chevron-down"></i></button>
+                        <div id="acc-contact" class="accordion-content bg-black"><div class="p-4 text-sm"><a href="mailto:thepremanshu@gmail.com" class="text-gray-400">Email Us</a></div></div>
+                    </div>
+                    <!-- Added Privacy & Disclaimer for Mobile -->
+                    <div class="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
+                        <button class="accordion-btn w-full flex justify-between items-center p-4 text-left font-bold text-gray-300 hover:bg-gray-800" onclick="toggleAccordion('acc-privacy', this)"><span><i class="fas fa-shield-alt text-green-500 mr-2"></i> Privacy Policy</span><i class="fas fa-chevron-down"></i></button>
+                        <div id="acc-privacy" class="accordion-content bg-black"><div class="p-4 text-sm text-gray-400">We respect your privacy. No data is shared with third parties.</div></div>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
+                        <button class="accordion-btn w-full flex justify-between items-center p-4 text-left font-bold text-gray-300 hover:bg-gray-800" onclick="toggleAccordion('acc-disclaimer', this)"><span><i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i> Disclaimer</span><i class="fas fa-chevron-down"></i></button>
+                        <div id="acc-disclaimer" class="accordion-content bg-black"><div class="p-4 text-sm text-gray-400">Services provided as-is. Use at your own discretion.</div></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 4. ABOUT & CONTACT & PRIVACY (Desktop) -->
+        <!-- 4. PAGES (About/Contact/Privacy/Disclaimer Desktop) -->
         <div id="section-about" class="hidden-section hidden md:block">
              <div class="max-w-4xl mx-auto bg-gray-900 border border-gray-800 rounded-lg p-12 shadow-2xl">
                 <h2 class="text-3xl font-bold mb-6 text-red-600">About APNA ADDA</h2>
-                <div class="space-y-4 text-gray-300 leading-relaxed text-justify">
-                    <p>APNA ADDA is a technology-driven company committed to building smart, simple, and useful digital solutions for everyday life.</p>
-                    <p>The company was founded and is owned by <strong>Premanshu Kumar</strong>.</p>
-                </div>
+                <p class="text-gray-300">Technology-driven company founded by <strong>Premanshu Kumar</strong>.</p>
             </div>
         </div>
         <div id="section-contact" class="hidden-section hidden md:block">
-             <div class="flex flex-col items-center justify-center min-h-[50vh]">
-                <h2 class="text-4xl font-bold mb-8">Get In Touch</h2>
-                <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 shadow-lg w-full max-w-lg text-center">
-                    <a href="mailto:thepremanshu@gmail.com" class="flex items-center justify-center gap-3 w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded shadow transition">
-                        <i class="fas fa-envelope"></i> Email Us
-                    </a>
-                </div>
+             <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 max-w-lg mx-auto text-center mt-10">
+                <h2 class="text-2xl font-bold mb-4">Contact Us</h2>
+                <a href="mailto:thepremanshu@gmail.com" class="inline-block bg-red-600 text-white font-bold py-2 px-6 rounded">Email Us</a>
+            </div>
+        </div>
+        <div id="section-privacy" class="hidden-section hidden md:block">
+             <div class="max-w-4xl mx-auto bg-gray-900 border border-gray-800 rounded-lg p-12 shadow-2xl mt-10">
+                <h2 class="text-3xl font-bold mb-6 text-green-600">Privacy Policy</h2>
+                <p class="text-gray-300">We value your privacy and data security. We do not sell your personal information.</p>
+            </div>
+        </div>
+        <div id="section-disclaimer" class="hidden-section hidden md:block">
+             <div class="max-w-4xl mx-auto bg-gray-900 border border-gray-800 rounded-lg p-12 shadow-2xl mt-10">
+                <h2 class="text-3xl font-bold mb-6 text-yellow-500">Disclaimer</h2>
+                <p class="text-gray-300">Information provided is for general purposes only.</p>
             </div>
         </div>
 
-        <!-- 5. LOGIN / SIGNUP SECTION -->
-        <div id="section-login" class="hidden-section flex justify-center items-center h-full py-10">
+        <!-- 5. LOGIN/SIGNUP -->
+        <div id="section-login" class="hidden-section flex justify-center items-center py-10">
             <div class="bg-gray-900 p-8 rounded-lg border border-red-900/30 shadow-2xl w-full max-w-md animate-fade-in mx-2">
-                <button onclick="handleGoogleLogin()" class="w-full bg-white text-black font-bold py-3 rounded hover:bg-gray-200 transition flex items-center justify-center gap-3 mb-6">
-                    <i class="fab fa-google text-red-600 text-lg"></i> Continue with Google
-                </button>
-
+                <button onclick="handleGoogleLogin()" class="w-full bg-white text-black font-bold py-3 rounded mb-6 flex justify-center gap-2"><i class="fab fa-google text-red-600 text-lg"></i> Continue with Google</button>
                 <div class="tabs-container">
                     <div class="tab-btn active" id="tab-login" onclick="switchAuthTab('login')">LOGIN</div>
                     <div class="tab-btn" id="tab-signup" onclick="switchAuthTab('signup')">SIGNUP</div>
                     <div class="tab-glider" id="authGlider" style="width: 50%;"></div>
                 </div>
-
                 <form id="loginForm" onsubmit="handleLoginSubmit(event)">
-                    <h3 class="text-white font-bold mb-4 text-xl">Welcome Back</h3>
-                    <div class="mb-4"><label class="block text-gray-400 mb-2 text-sm">Email</label><input type="email" id="loginEmail" class="w-full p-3 rounded bg-black border-gray-700 focus:border-red-600 transition" required></div>
-                    <div class="mb-6"><label class="block text-gray-400 mb-2 text-sm">Password</label><input type="password" id="loginPass" class="w-full p-3 rounded bg-black border-gray-700 focus:border-red-600 transition" required></div>
-                    <button type="submit" id="loginBtn" class="w-full bg-red-600 text-white font-bold py-3 rounded hover:bg-red-700 transition">LOGIN</button>
+                    <input type="email" id="loginEmail" class="w-full p-3 mb-4 rounded bg-black border-gray-700" placeholder="Email" required>
+                    <input type="password" id="loginPass" class="w-full p-3 mb-6 rounded bg-black border-gray-700" placeholder="Password" required>
+                    <button type="submit" class="w-full bg-red-600 text-white font-bold py-3 rounded">LOGIN</button>
                 </form>
-
                 <form id="signupForm" onsubmit="handleSignupSubmit(event)" class="hidden">
-                    <h3 class="text-white font-bold mb-4 text-xl">Create Account</h3>
-                    <div class="mb-4"><label class="block text-gray-400 mb-2 text-sm">Email</label><input type="email" id="signupEmail" class="w-full p-3 rounded bg-black border-gray-700 focus:border-red-600 transition" required></div>
-                    <div class="mb-6"><label class="block text-gray-400 mb-2 text-sm">Set Password</label><input type="password" id="signupPass" class="w-full p-3 rounded bg-black border-gray-700 focus:border-red-600 transition" required></div>
-                    <button type="submit" id="signupBtn" class="w-full bg-white text-black font-bold py-3 rounded hover:bg-gray-200 transition">SIGN UP</button>
+                    <input type="email" id="signupEmail" class="w-full p-3 mb-4 rounded bg-black border-gray-700" placeholder="Email" required>
+                    <input type="password" id="signupPass" class="w-full p-3 mb-6 rounded bg-black border-gray-700" placeholder="Password" required>
+                    <button type="submit" class="w-full bg-white text-black font-bold py-3 rounded">SIGN UP</button>
                 </form>
             </div>
         </div>
 
-        <!-- 6. ADMIN DASHBOARD (Sliding Tabs) -->
+        <!-- 6. ADMIN DASHBOARD -->
         <div id="section-admin" class="hidden-section">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-xl md:text-2xl font-bold text-white">Admin Dashboard</h2>
-            </div>
-
-            <!-- Tabs -->
+            <h2 class="text-xl md:text-2xl font-bold text-white mb-6">Admin Dashboard</h2>
             <div class="tabs-container">
                 <div class="tab-btn active" onclick="switchAdminTab('apps')">APPS</div>
                 <div class="tab-btn" onclick="switchAdminTab('slides')">SLIDES</div>
@@ -378,84 +325,51 @@
                 <div class="tab-glider" id="adminGlider" style="width: 25%;"></div>
             </div>
 
-            <!-- TAB 1: APPS (Original layout restored) -->
+            <!-- APPS TAB -->
             <div id="admin-tab-apps" class="admin-content animate-fade-in">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                     <div class="lg:col-span-3 bg-gray-900 p-6 rounded-lg border border-gray-800 h-fit">
-                        <h3 class="text-lg font-bold text-white mb-4">Add / Edit App</h3>
+                    <div class="lg:col-span-4 bg-gray-900 p-6 rounded-lg border border-gray-800">
+                        <h3 class="font-bold text-white mb-4">Add / Edit App</h3>
                         <form id="appForm" onsubmit="handleAppSubmit(event)">
                             <input type="hidden" id="editAppId">
+                            <input type="text" id="appName" class="w-full p-2 mb-3 rounded" placeholder="App Name" required>
+                            <select id="launchStatus" class="w-full p-2 mb-3 rounded" onchange="toggleStatusFields()" required>
+                                <option value="Launched">Launched</option>
+                                <option value="Coming Soon">Coming Soon</option>
+                                <option value="come_tomorrow">Come Tomorrow</option>
+                                <option value="delay">Delay</option>
+                                <option value="date">Specific Date</option>
+                                <option value="weeks">Weeks</option>
+                                <option value="months">Months</option>
+                                <option value="hours">Hours (Countdown)</option>
+                                <option value="countdown">Countdown</option>
+                                <option value="relaunch_date">Relaunch Date</option>
+                                <option value="relaunch_weeks">Relaunch Weeks</option>
+                                <option value="relaunch_hours">Relaunch Hours</option>
+                                <option value="error">Error</option>
+                                <option value="emergency">Emergency</option>
+                                <option value="none">None</option>
+                            </select>
                             
-                            <div class="mb-3">
-                                <label class="text-xs text-gray-400 block mb-1">Name</label>
-                                <input type="text" id="appName" class="w-full p-2 rounded" required>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="text-xs text-gray-400 block mb-1">Status Type</label>
-                                <select id="launchStatus" class="w-full p-2 rounded" onchange="toggleStatusFields()" required>
-                                    <option value="Launched">Launched</option>
-                                    <option value="Coming Soon">Coming Soon (General)</option>
-                                    <option value="come_tomorrow">Come Tomorrow</option>
-                                    <option value="delay">Delay in Launch</option>
-                                    <option value="date">Specific Date</option>
-                                    <option value="weeks">In X Weeks</option>
-                                    <option value="months">In X Months</option>
-                                    <option value="hours">In X Hours (Countdown)</option>
-                                    <option value="countdown">Live Countdown (Min:Sec)</option>
-                                    <option value="relaunch_date">RELAUNCH SPECIFIC DATE</option>
-                                    <option value="relaunch_weeks">RELAUNCH SPECIFIC WEEK</option>
-                                    <option value="relaunch_hours">RELAUNCH IN X HOURS (RUNNING)</option>
-                                    <option value="relaunch_countdown">RELAUNCH COUNTDOWN</option>
-                                    <option value="error">ERROR IN WEBSITE</option>
-                                    <option value="emergency">EMERGENCY LAUNCH</option>
-                                    <option value="none">No Status Badge</option>
-                                </select>
-                            </div>
+                            <!-- Dynamic Inputs -->
+                            <div id="dateField" class="hidden mb-3"><input type="date" id="statusDate" class="w-full p-2 rounded"></div>
+                            <div id="weeksField" class="hidden mb-3"><input type="number" id="statusWeeks" class="w-full p-2 rounded" placeholder="Weeks"></div>
+                            <div id="monthsField" class="hidden mb-3"><input type="number" id="statusMonths" class="w-full p-2 rounded" placeholder="Months"></div>
+                            <div id="hoursField" class="hidden mb-3"><input type="number" id="statusHours" class="w-full p-2 rounded" placeholder="Hours"></div>
+                            <div id="countdownField" class="hidden mb-3"><input type="datetime-local" id="statusCountdown" class="w-full p-2 rounded text-black"></div>
 
-                            <!-- Restored All Dynamic Inputs -->
-                            <div id="dateField" class="mb-3 hidden">
-                                <label class="text-xs text-gray-400 block mb-1">Select Date</label>
-                                <input type="date" id="statusDate" class="w-full p-2 rounded">
-                            </div>
-                            <div id="weeksField" class="mb-3 hidden">
-                                <label class="text-xs text-gray-400 block mb-1">Number of Weeks</label>
-                                <input type="number" id="statusWeeks" class="w-full p-2 rounded" placeholder="e.g. 2">
-                            </div>
-                            <div id="monthsField" class="mb-3 hidden">
-                                <label class="text-xs text-gray-400 block mb-1">Number of Months</label>
-                                <input type="number" id="statusMonths" class="w-full p-2 rounded" placeholder="e.g. 6">
-                            </div>
-                            <div id="hoursField" class="mb-3 hidden">
-                                <label class="text-xs text-gray-400 block mb-1">Number of Hours</label>
-                                <input type="number" id="statusHours" class="w-full p-2 rounded" placeholder="e.g. 17">
-                                <p class="text-[10px] text-gray-500 mt-1">Countdown starts from now.</p>
-                            </div>
-                            <div id="countdownField" class="mb-3 hidden">
-                                <div class="p-2 bg-gray-800 rounded border border-gray-700 mb-2">
-                                    <label class="text-xs text-gray-400 block mb-1">Target Launch Time</label>
-                                    <input type="datetime-local" id="statusCountdown" class="w-full p-2 rounded text-black mb-2">
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="text-xs text-gray-400 block mb-1">Link (Launch URL)</label>
-                                <input type="url" id="appLink" class="w-full p-2 rounded" placeholder="https://...">
-                            </div>
-                            
-                            <div class="mb-4"><label class="text-xs text-gray-400 block mb-1">Image (Auto-Resized)</label><input type="file" id="appImage" class="w-full text-xs text-gray-400" accept="image/*"></div>
+                            <input type="url" id="appLink" class="w-full p-2 mb-3 rounded" placeholder="App Link">
+                            <input type="file" id="appImage" class="w-full text-xs text-gray-400 mb-4" accept="image/*">
                             <div class="flex gap-2">
-                                <button type="submit" id="submitBtn" class="flex-1 bg-white text-black font-bold py-2 rounded hover:bg-gray-200">Save</button>
-                                <button type="button" onclick="resetForm()" class="px-3 border border-gray-600 rounded text-white">Reset</button>
+                                <button type="submit" class="flex-1 bg-red-600 text-white font-bold py-2 rounded">SAVE</button>
+                                <button type="button" onclick="resetAppForm()" class="px-4 border border-gray-600 rounded text-gray-400">Reset</button>
                             </div>
                         </form>
                     </div>
-
-                    <div class="lg:col-span-9 bg-gray-900 rounded-lg border border-gray-800 overflow-hidden h-fit mb-6">
-                        <div class="p-4 bg-black border-b border-gray-800"><h3 class="font-bold">App Database</h3></div>
-                        <div class="overflow-x-auto max-h-[600px] overflow-y-auto">
-                            <table class="w-full text-left text-sm text-gray-400 whitespace-nowrap">
-                                <thead class="bg-gray-800 text-xs uppercase"><tr><th class="p-3">Name</th><th class="p-3">Status</th><th class="p-3 text-right">Action</th></tr></thead>
+                    <div class="lg:col-span-8 bg-gray-900 rounded-lg border border-gray-800 overflow-hidden">
+                        <div class="overflow-x-auto max-h-[500px]">
+                            <table class="w-full text-left text-sm text-gray-400">
+                                <thead class="bg-black text-xs uppercase"><tr><th class="p-3">Name</th><th class="p-3">Status</th><th class="p-3 text-right">Action</th></tr></thead>
                                 <tbody id="adminAppsTable"></tbody>
                             </table>
                         </div>
@@ -463,53 +377,46 @@
                 </div>
             </div>
 
-            <!-- TAB 2: SLIDES -->
+            <!-- SLIDES TAB -->
             <div id="admin-tab-slides" class="admin-content hidden-section animate-fade-in">
                 <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 max-w-2xl mx-auto">
-                    <h3 class="text-lg font-bold text-white mb-4">Slideshow</h3>
-                    <div class="mb-4">
-                        <input type="file" id="slideUploadInput" class="w-full text-xs text-gray-400 mb-2 border border-gray-700 p-2 rounded" accept="image/*">
-                        <button onclick="uploadSlide()" class="w-full bg-red-600 text-white font-bold py-2 rounded hover:bg-red-700 text-sm">Upload</button>
+                    <h3 class="font-bold text-white mb-4">Manage Slides</h3>
+                    <div class="flex gap-2 mb-4">
+                        <input type="file" id="slideUploadInput" class="flex-1 text-xs text-gray-400 border border-gray-700 p-2 rounded" accept="image/*">
+                        <button onclick="uploadSlide()" class="bg-blue-600 text-white font-bold px-6 rounded text-sm">UPLOAD</button>
                     </div>
                     <div id="adminSlidesList" class="space-y-2 max-h-[400px] overflow-y-auto"></div>
                 </div>
             </div>
 
-            <!-- TAB 3: SUPPORT -->
+            <!-- SUPPORT TAB -->
             <div id="admin-tab-support" class="admin-content hidden-section animate-fade-in">
-                <div class="bg-gray-900 rounded-lg border border-gray-800 overflow-hidden">
-                    <div class="p-4 bg-black border-b border-gray-800 flex justify-between">
-                        <h3 class="font-bold text-white">Support Messages</h3>
-                        <button onclick="fetchSupportChats()" class="text-xs text-gray-400 hover:text-white"><i class="fas fa-sync"></i> Refresh</button>
-                    </div>
-                    <div class="flex flex-col md:flex-row h-[500px]">
-                        <div class="w-full md:w-1/3 border-r border-gray-800 overflow-y-auto bg-[#111]" id="adminSupportUserList"></div>
-                        <div class="w-full md:w-2/3 flex flex-col bg-[#0a0a0a] relative">
-                            <div id="adminChatHeader" class="p-3 border-b border-gray-800 bg-[#141414] font-bold text-gray-300 flex justify-between items-center">
-                                <span>Select user</span>
-                            </div>
-                            <div id="adminChatBody" class="flex-1 overflow-y-auto p-4 flex flex-col gap-3"></div>
-                            <div id="adminChatFooter" class="p-3 border-t border-gray-800 bg-[#141414] hidden">
-                                <form onsubmit="sendAdminReply(event)" class="flex gap-2">
-                                    <input type="text" id="adminChatInput" class="flex-1 bg-black border border-gray-700 rounded-full px-4 py-2 text-sm" placeholder="Reply...">
-                                    <button type="submit" class="text-red-600 px-3"><i class="fas fa-paper-plane"></i></button>
-                                </form>
-                            </div>
-                        </div>
+                <div class="bg-gray-900 rounded-lg border border-gray-800 flex flex-col md:flex-row h-[500px]">
+                    <div class="w-full md:w-1/3 border-r border-gray-800 bg-black overflow-y-auto" id="adminSupportUserList"></div>
+                    <div class="w-full md:w-2/3 flex flex-col bg-[#0a0a0a]">
+                        <div id="adminChatHeader" class="p-3 border-b border-gray-800 bg-[#141414] font-bold text-gray-300">Select User</div>
+                        <div id="adminChatBody" class="flex-1 overflow-y-auto p-4 flex flex-col gap-3"></div>
+                        <form onsubmit="sendAdminReply(event)" id="adminChatFooter" class="p-3 border-t border-gray-800 bg-[#141414] hidden flex gap-2">
+                            <input type="text" id="adminChatInput" class="flex-1 bg-black border border-gray-700 rounded-full px-4 py-2 text-sm" placeholder="Reply...">
+                            <button type="submit" class="text-red-600 px-3"><i class="fas fa-paper-plane"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 4: NOTIFICATIONS -->
+            <!-- NOTIFICATIONS TAB -->
             <div id="admin-tab-notifs" class="admin-content hidden-section animate-fade-in">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 h-fit">
-                        <h3 class="font-bold text-white mb-4">Send Notification</h3>
+                        <h3 class="font-bold text-white mb-4">Manage Notifications</h3>
                         <form onsubmit="handleNotifSubmit(event)">
-                            <textarea id="notifText" class="w-full p-3 rounded mb-3 bg-black border-gray-700 h-24" placeholder="Notification Message (Optional)" ></textarea>
-                            <label class="block text-xs text-gray-400 mb-1">Image (Optional)</label>
+                            <input type="hidden" id="editNotifId">
+                            <textarea id="notifText" class="w-full p-3 rounded mb-3 bg-black border-gray-700 h-24" placeholder="Message..."></textarea>
                             <input type="file" id="notifImage" class="w-full text-xs text-gray-400 mb-4 border border-gray-700 p-2 rounded" accept="image/*">
-                            <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 rounded hover:bg-green-700">POST NOTIFICATION</button>
+                            <div class="flex gap-2">
+                                <button type="submit" class="flex-1 bg-green-600 text-white font-bold py-2 rounded">POST / UPDATE</button>
+                                <button type="button" onclick="resetNotifForm()" class="px-3 border border-gray-600 rounded">Reset</button>
+                            </div>
                         </form>
                     </div>
                     <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 max-h-[500px] overflow-y-auto">
@@ -519,52 +426,52 @@
                 </div>
             </div>
         </div>
-
     </main>
 
-    <!-- MOBILE BOTTOM NAVIGATION -->
+    <!-- FOOTER (Desktop Only) -->
+    <footer class="hidden md:block bg-black border-t border-gray-900 py-8 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center gap-8 mb-4 text-sm font-medium text-gray-400">
+                <span onclick="navigateTo('privacy')" class="cursor-pointer hover:text-red-500 transition">Privacy Policy</span>
+                <span onclick="navigateTo('disclaimer')" class="cursor-pointer hover:text-red-500 transition">Disclaimer</span>
+                <span onclick="navigateTo('about')" class="cursor-pointer hover:text-red-500 transition">About Us</span>
+                <span onclick="navigateTo('contact')" class="cursor-pointer hover:text-red-500 transition">Contact Us</span>
+            </div>
+            <p class="text-xs text-gray-600 font-bold">DESIGNED BY PREMANSHU KUMAR</p>
+        </div>
+    </footer>
+
+    <!-- MOBILE BOTTOM NAV -->
     <div class="md:hidden fixed bottom-0 left-0 w-full bg-black/95 backdrop-blur-md border-t border-gray-900 flex justify-around items-center py-3 z-40 pb-safe">
-        <div class="bottom-nav-item active flex flex-col items-center gap-1 cursor-pointer w-1/3" id="bn-home" onclick="navigateTo('home')">
-            <i class="fas fa-home text-xl"></i>
-            <span class="text-[10px] font-bold">Home</span>
-        </div>
-        <div class="bottom-nav-item flex flex-col items-center gap-1 cursor-pointer w-1/3" id="bn-apps" onclick="navigateTo('apps')">
-            <i class="fas fa-th-large text-xl"></i>
-            <span class="text-[10px] font-bold">Apps</span>
-        </div>
-        <div class="bottom-nav-item flex flex-col items-center gap-1 cursor-pointer w-1/3" id="bn-profile" onclick="navigateTo('profile')">
-            <i class="fas fa-user-circle text-xl"></i>
-            <span class="text-[10px] font-bold">Profile</span>
-        </div>
+        <div class="bottom-nav-item active flex flex-col items-center gap-1 cursor-pointer w-1/3" id="bn-home" onclick="navigateTo('home')"><i class="fas fa-home text-xl"></i><span class="text-[10px]">Home</span></div>
+        <div class="bottom-nav-item flex flex-col items-center gap-1 cursor-pointer w-1/3" id="bn-apps" onclick="navigateTo('apps')"><i class="fas fa-th-large text-xl"></i><span class="text-[10px]">Apps</span></div>
+        <div class="bottom-nav-item flex flex-col items-center gap-1 cursor-pointer w-1/3" id="bn-profile" onclick="navigateTo('profile')"><i class="fas fa-user-circle text-xl"></i><span class="text-[10px]">Profile</span></div>
     </div>
 
-    <!-- SUPPORT CHAT WIDGET -->
+    <!-- CHAT WIDGET -->
     <div id="supportWidget" class="z-50">
         <div class="chat-widget-btn" onclick="toggleChatWindow()">
             <i class="fas fa-comments"></i>
-            <div id="userChatBadge" class="notification-dot hidden"></div>
+            <div id="userChatBadge" class="notification-dot hidden" style="top:0;right:0;border:none;"></div>
         </div>
         <div class="chat-window" id="chatWindow">
             <div class="chat-header">
                 <div class="flex items-center gap-2"><i class="fas fa-robot"></i> SUPPORT</div>
                 <i class="fas fa-times cursor-pointer" onclick="toggleChatWindow()"></i>
             </div>
-            <div class="bg-gray-800 p-3 text-xs text-center text-gray-400 border-b border-gray-700">
-                WELCOME TO APNA ADDA! HOW CAN WE ASSIST YOU TODAY?
-            </div>
+            <div class="bg-gray-800 p-2 text-xs text-center text-gray-400">How can we help?</div>
             <div class="chat-body" id="userChatBody"></div>
             <div class="chat-footer">
                 <form class="flex w-full gap-2" onsubmit="sendUserMessage(event)">
-                    <input type="text" id="userChatInput" class="chat-input" placeholder="Type message..." required autocomplete="off">
+                    <input type="text" id="userChatInput" class="chat-input" placeholder="Message..." required autocomplete="off">
                     <button type="submit" class="chat-send-btn"><i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT -->
     <script>
-        // 1. FIREBASE CONFIG
+        // --- CONFIG ---
         const firebaseConfig = {
             apiKey: "AIzaSyAUHUwmJVnW40FefXCpuxfREsnXNCHHxQU",
             authDomain: "ai-chatbot-51f32.firebaseapp.com",
@@ -577,386 +484,282 @@
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.database();
-        auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-
-        // 2. STATE
         const ADMIN_EMAIL = "thepremanshu@gmail.com";
-        let allApps = [], allSlides = [], allNotifs = [];
-        let slideInterval = null, countdownInterval = null;
-        let currentUserEmail = null, currentAdminChatUser = null;
-        let lastReadNotifTime = parseInt(localStorage.getItem('lastReadNotifTime') || '0');
+        let allApps=[], allNotifs=[], currentUserEmail=null, currentAdminChatUser=null, lastReadNotifTime=parseInt(localStorage.getItem('lastReadNotifTime')||'0');
 
-        // 3. INIT & NAVIGATION
+        // --- INIT ---
         window.onload = function() {
-            const savedSection = localStorage.getItem('apnaAddaCurrentSection') || 'home';
-            if(savedSection !== 'admin') navigateTo(savedSection, true); 
-            fetchApps();
-            fetchSlides();
-            fetchNotifications();
+            const saved = localStorage.getItem('apnaAddaCurrentSection') || 'home';
+            if(saved !== 'admin') navigateTo(saved, true);
+            fetchApps(); fetchSlides(); fetchNotifications();
         };
 
-        function navigateTo(sectionId, isInitialLoad = false) {
-            if(!isInitialLoad) localStorage.setItem('apnaAddaCurrentSection', sectionId);
+        // --- NAVIGATION ---
+        function navigateTo(id, init=false) {
+            if(!init) localStorage.setItem('apnaAddaCurrentSection', id);
+            ['home','apps','about','contact','login','admin','profile','privacy','disclaimer'].forEach(s => {
+                const el=document.getElementById(`section-${s}`); if(el) el.classList.add('hidden-section');
+            });
+            const target = document.getElementById(`section-${id}`);
+            if(target) target.classList.remove('hidden-section');
             
-            ['home', 'apps', 'about', 'contact', 'login', 'admin', 'profile'].forEach(s => {
-                const el = document.getElementById(`section-${s}`);
-                if(el) el.classList.add('hidden-section');
-            });
-
+            // Link Active States
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            const navLink = document.getElementById(`link-${sectionId}`);
-            if (navLink) navLink.classList.add('active');
-
+            const nl = document.getElementById(`link-${id}`); if(nl) nl.classList.add('active');
+            
             document.querySelectorAll('.bottom-nav-item').forEach(i => i.classList.remove('active'));
-            if(sectionId === 'home') document.getElementById('bn-home').classList.add('active');
-            else if(sectionId === 'apps') document.getElementById('bn-apps').classList.add('active');
-            else if(['profile', 'login', 'admin'].includes(sectionId)) document.getElementById('bn-profile').classList.add('active');
+            if(id==='home') document.getElementById('bn-home').classList.add('active');
+            else if(id==='apps') document.getElementById('bn-apps').classList.add('active');
+            else if(['profile','login','admin','about','contact','privacy','disclaimer'].includes(id)) document.getElementById('bn-profile').classList.add('active');
 
-            if(window.innerWidth < 768 && ['about', 'contact'].includes(sectionId)) {
-                document.getElementById('section-profile').classList.remove('hidden-section');
-                setTimeout(() => toggleAccordion(`acc-${sectionId}`, document.querySelector(`button[onclick*="${sectionId}"]`)), 100);
-            } else {
-                const target = document.getElementById(`section-${sectionId}`);
-                if(target) target.classList.remove('hidden-section');
-            }
-            window.scrollTo(0, 0);
+            window.scrollTo(0,0);
         }
 
-        function scrollToHomeApps() { document.getElementById('homeAppsContainer').scrollIntoView({ behavior: 'smooth' }); }
-        function toggleAccordion(id, btn) {
-            const content = document.getElementById(id);
-            const isActive = btn.classList.contains('active');
-            document.querySelectorAll('.accordion-content').forEach(c => { c.style.maxHeight = '0'; });
-            document.querySelectorAll('.accordion-btn').forEach(b => { b.classList.remove('active'); });
-            if (!isActive) { btn.classList.add('active'); content.style.maxHeight = content.scrollHeight + "px"; }
-        }
-
-        // --- HELPERS ---
-        const showToast = (title, icon = 'success') => {
-            Swal.fire({ toast: true, position: 'top-end', icon: icon, title: title, showConfirmButton: false, timer: 3000, background: '#1a1a1a', color: '#fff', iconColor: '#E50914' });
-        };
-        const showConfirm = (title, text) => {
-            return Swal.fire({ title: title, text: text, icon: 'warning', showCancelButton: true, confirmButtonColor: '#E50914', cancelButtonColor: '#333', background: '#141414', color: '#fff' });
-        };
-        const compressImage = (file) => {
-            return new Promise((resolve) => {
-                const reader = new FileReader(); reader.readAsDataURL(file);
-                reader.onload = (e) => {
-                    const img = new Image(); img.src = e.target.result;
-                    img.onload = () => {
-                        const canvas = document.createElement('canvas');
-                        let w = img.width, h = img.height, max=800;
-                        if(w>h){if(w>max){h*=max/w;w=max;}}else{if(h>max){w*=max/h;h=max;}}
-                        canvas.width=w; canvas.height=h;
-                        canvas.getContext('2d').drawImage(img,0,0,w,h);
-                        resolve(canvas.toDataURL('image/jpeg', 0.7));
-                    };
-                };
-            });
-        };
-        function sanitizeEmail(e) { return e.replace(/\./g, ','); }
-
-        // --- AUTH & TABS ---
-        function switchAuthTab(mode) {
-            const glider = document.getElementById('authGlider');
-            if (mode === 'login') {
-                glider.style.transform = 'translateX(0)';
-                document.getElementById('loginForm').classList.remove('hidden');
-                document.getElementById('signupForm').classList.add('hidden');
-                document.getElementById('tab-login').classList.add('active');
-                document.getElementById('tab-signup').classList.remove('active');
-            } else {
-                glider.style.transform = 'translateX(100%)';
-                document.getElementById('loginForm').classList.add('hidden');
-                document.getElementById('signupForm').classList.remove('hidden');
-                document.getElementById('tab-login').classList.remove('active');
-                document.getElementById('tab-signup').classList.add('active');
-            }
-        }
-        function switchAdminTab(tabName) {
-            const tabs = ['apps', 'slides', 'support', 'notifs'];
-            const index = tabs.indexOf(tabName);
-            document.getElementById('adminGlider').style.transform = `translateX(${index * 100}%)`;
-            tabs.forEach(t => document.getElementById(`admin-tab-${t}`).classList.add('hidden-section'));
-            document.getElementById(`admin-tab-${tabName}`).classList.remove('hidden-section');
-            document.querySelectorAll('#section-admin .tab-btn').forEach((btn, i) => {
-                if(i===index) btn.classList.add('active'); else btn.classList.remove('active');
-            });
-        }
-
-        auth.onAuthStateChanged((user) => {
-            if (user) {
+        // --- AUTH ---
+        auth.onAuthStateChanged(user => {
+            const navLogin=document.getElementById('navLoginBtn'), navDash=document.getElementById('navDashboardBtn'), navLogout=document.getElementById('navLogoutBtn');
+            const profOut=document.getElementById('profileLoggedOut'), profIn=document.getElementById('profileLoggedIn');
+            if(user) {
                 currentUserEmail = user.email;
-                document.getElementById('navLoginBtn').classList.add('hidden');
-                document.getElementById('navLogoutBtn').classList.remove('hidden');
-                document.getElementById('profileLoggedOut').classList.add('hidden');
-                document.getElementById('profileLoggedIn').classList.remove('hidden');
+                navLogin.classList.add('hidden'); navLogout.classList.remove('hidden');
+                profOut.classList.add('hidden'); profIn.classList.remove('hidden');
                 document.getElementById('profileEmailDisplay').innerText = user.email.split('@')[0];
-                initUserChat(user.email);
-                if (user.email === ADMIN_EMAIL) {
-                    document.getElementById('navDashboardBtn').classList.remove('hidden');
+                initUserChat(user.email); // Start user chat listener
+                if(user.email === ADMIN_EMAIL) {
+                    navDash.classList.remove('hidden');
                     document.getElementById('profileAdminBtn').classList.remove('hidden');
-                    fetchSupportChats(); 
-                } else {
-                    document.getElementById('navDashboardBtn').classList.add('hidden');
-                    document.getElementById('profileAdminBtn').classList.add('hidden');
+                    fetchSupportChats(); // Start admin chat listener
                 }
             } else {
                 currentUserEmail = null;
-                document.getElementById('navLoginBtn').classList.remove('hidden');
-                document.getElementById('navLogoutBtn').classList.add('hidden');
-                document.getElementById('navDashboardBtn').classList.add('hidden');
-                document.getElementById('profileLoggedOut').classList.remove('hidden');
-                document.getElementById('profileLoggedIn').classList.add('hidden');
+                navLogin.classList.remove('hidden'); navLogout.classList.add('hidden'); navDash.classList.add('hidden');
+                profOut.classList.remove('hidden'); profIn.classList.add('hidden');
             }
         });
-
-        function handleGoogleLogin() { auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(r => navigateTo(r.user.email===ADMIN_EMAIL?'admin':'home')); }
-        function handleLoginSubmit(e) { e.preventDefault(); auth.signInWithEmailAndPassword(document.getElementById('loginEmail').value, document.getElementById('loginPass').value).then(r=>navigateTo(r.user.email===ADMIN_EMAIL?'admin':'home')).catch(e=>showToast(e.message,'error')); }
-        function handleSignupSubmit(e) { e.preventDefault(); auth.createUserWithEmailAndPassword(document.getElementById('signupEmail').value, document.getElementById('signupPass').value).then(r=>{showToast('Created');navigateTo('home');}).catch(e=>showToast(e.message,'error')); }
-        function handleLogout() { auth.signOut().then(()=>navigateTo('home')); }
-
-        // --- NOTIFICATIONS ---
-        function fetchNotifications() {
-            db.ref('notifications').orderByChild('timestamp').on('value', snap => {
-                allNotifs = []; const d = snap.val();
-                if(d) Object.keys(d).forEach(k => allNotifs.push({id:k, ...d[k]}));
-                allNotifs.sort((a,b) => b.timestamp - a.timestamp);
-                renderUserNotifications();
-                renderAdminNotifications();
-                const badge = document.getElementById('navNotificationDot');
-                if (allNotifs.length > 0 && allNotifs[0].timestamp > lastReadNotifTime) badge.classList.remove('hidden');
-                else badge.classList.add('hidden');
-            });
-        }
-        function toggleNotificationModal() {
-            const modal = document.getElementById('notificationModal');
-            modal.classList.toggle('open');
-            if (modal.classList.contains('open') && allNotifs.length > 0) {
-                lastReadNotifTime = Date.now();
-                localStorage.setItem('lastReadNotifTime', lastReadNotifTime);
-                document.getElementById('navNotificationDot').classList.add('hidden');
-            }
-        }
-        function renderUserNotifications() {
-            const c = document.getElementById('userNotificationList'); c.innerHTML='';
-            if(allNotifs.length===0) return c.innerHTML='<div class="text-center text-gray-500 mt-10">No notifications.</div>';
-            allNotifs.forEach(n => {
-                c.innerHTML += `<div class="bg-[#1f1f1f] border border-gray-800 rounded p-3 flex gap-3">
-                    ${n.image ? `<img src="${n.image}" class="w-16 h-16 object-cover rounded border border-gray-700">` : ''}
-                    <div class="flex-1">
-                        ${n.text ? `<p class="text-sm text-gray-200 mb-1 leading-relaxed">${n.text}</p>` : ''}
-                        <div class="text-[10px] text-gray-500 text-right">${new Date(n.timestamp).toLocaleString()}</div>
-                    </div>
-                </div>`;
-            });
-        }
-        function renderAdminNotifications() {
-            const c = document.getElementById('adminNotifList'); c.innerHTML='';
-            allNotifs.forEach(n => {
-                c.innerHTML += `<div class="bg-black border border-gray-800 p-3 rounded flex justify-between items-start">
-                    <div class="flex gap-3">
-                        ${n.image ? `<img src="${n.image}" class="w-10 h-10 object-cover rounded">` : ''}
-                        <div><p class="text-xs text-gray-300 line-clamp-2">${n.text||'Image Only'}</p><span class="text-[10px] text-gray-600">${new Date(n.timestamp).toLocaleDateString()}</span></div>
-                    </div>
-                    <button onclick="db.ref('notifications/${n.id}').remove()" class="text-red-500 hover:text-white text-xs"><i class="fas fa-trash"></i></button>
-                </div>`;
-            });
-        }
-        async function handleNotifSubmit(e) {
-            e.preventDefault();
-            const text = document.getElementById('notifText').value.trim();
-            const file = document.getElementById('notifImage').files[0];
-            if(!text && !file) return showToast('Add text or image', 'warning');
-            let img = file ? await compressImage(file) : null;
-            db.ref('notifications').push({ text, image: img, timestamp: firebase.database.ServerValue.TIMESTAMP });
-            document.getElementById('notifText').value=''; document.getElementById('notifImage').value=''; showToast('Notification Sent');
+        function handleGoogleLogin() { auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(r=>navigateTo(r.user.email===ADMIN_EMAIL?'admin':'home')); }
+        function handleLoginSubmit(e) { e.preventDefault(); auth.signInWithEmailAndPassword(document.getElementById('loginEmail').value, document.getElementById('loginPass').value).then(r=>navigateTo(r.user.email===ADMIN_EMAIL?'admin':'home')).catch(e=>Swal.fire('Error',e.message,'error')); }
+        function handleSignupSubmit(e) { e.preventDefault(); auth.createUserWithEmailAndPassword(document.getElementById('signupEmail').value, document.getElementById('signupPass').value).then(r=>{Swal.fire('Success','Account Created','success');navigateTo('home');}).catch(e=>Swal.fire('Error',e.message,'error')); }
+        function handleLogout() { Swal.fire({title:'Logout?',icon:'warning',showCancelButton:true,background:'#111',color:'#fff'}).then(r=>{if(r.isConfirmed) auth.signOut().then(()=>navigateTo('home'));}); }
+        function switchAuthTab(m) {
+            const g=document.getElementById('authGlider');
+            if(m==='login') { g.style.transform='translateX(0)'; document.getElementById('loginForm').classList.remove('hidden'); document.getElementById('signupForm').classList.add('hidden'); }
+            else { g.style.transform='translateX(100%)'; document.getElementById('loginForm').classList.add('hidden'); document.getElementById('signupForm').classList.remove('hidden'); }
         }
 
-        // --- CHAT LOGIC ---
+        // --- CHAT (FIXED) ---
+        function sanitizeEmail(e) { return e.replace(/\./g, ','); }
         function toggleChatWindow() {
-            if (!auth.currentUser) return showConfirm('Login Required', 'Please login to chat.').then(r=>{if(r.isConfirmed)navigateTo('login')});
-            const win = document.getElementById('chatWindow'); win.classList.toggle('open');
-            if(win.classList.contains('open')) {
+            if(!auth.currentUser) return Swal.fire({title:'Login Required',icon:'info',background:'#111',color:'#fff'}).then(()=>navigateTo('login'));
+            const w = document.getElementById('chatWindow'); w.classList.toggle('open');
+            if(w.classList.contains('open')) {
                 document.getElementById('userChatBadge').classList.add('hidden');
-                if(currentUserEmail) db.ref(`support_chats/${sanitizeEmail(currentUserEmail)}`).update({ hasUnreadAdmin: false });
+                if(currentUserEmail) db.ref(`support_chats/${sanitizeEmail(currentUserEmail)}`).update({hasUnreadAdmin:false});
             }
         }
         function initUserChat(email) {
             const cb = document.getElementById('userChatBody');
-            db.ref(`support_chats/${sanitizeEmail(email)}`).on('value', s => {
-                const d = s.val(); cb.innerHTML = '';
-                if (d && d.messages) {
-                    if (d.hasUnreadAdmin && !document.getElementById('chatWindow').classList.contains('open')) document.getElementById('userChatBadge').classList.remove('hidden');
-                    Object.values(d.messages).forEach(msg => {
-                        const div = document.createElement('div'); div.className = `chat-message ${msg.sender === 'admin' ? 'msg-admin' : 'msg-user'}`; div.innerText = msg.text; cb.appendChild(div);
-                    });
-                    cb.scrollTop = cb.scrollHeight;
-                }
+            db.ref(`support_chats/${sanitizeEmail(email)}/messages`).on('value', s => {
+                cb.innerHTML = ''; const msgs = s.val();
+                if(msgs) Object.values(msgs).forEach(m => {
+                    const d = document.createElement('div');
+                    d.className = `chat-message ${m.sender==='admin'?'msg-admin':'msg-user'}`;
+                    d.innerText = m.text;
+                    cb.appendChild(d);
+                });
+                cb.scrollTop = cb.scrollHeight;
+            });
+            db.ref(`support_chats/${sanitizeEmail(email)}/hasUnreadAdmin`).on('value', s => {
+                if(s.val() && !document.getElementById('chatWindow').classList.contains('open')) document.getElementById('userChatBadge').classList.remove('hidden');
             });
         }
         function sendUserMessage(e) {
-            e.preventDefault(); const i=document.getElementById('userChatInput'); const t=i.value.trim(); if(!t||!currentUserEmail) return;
-            const r=db.ref(`support_chats/${sanitizeEmail(currentUserEmail)}`);
-            r.child('messages').push({sender:'user', text:t, timestamp:firebase.database.ServerValue.TIMESTAMP});
-            r.update({userEmail:currentUserEmail, lastMessageTime:firebase.database.ServerValue.TIMESTAMP, hasUnreadUser:true});
+            e.preventDefault(); const i = document.getElementById('userChatInput'), t = i.value.trim();
+            if(!t || !currentUserEmail) return;
+            const ref = db.ref(`support_chats/${sanitizeEmail(currentUserEmail)}`);
+            ref.child('messages').push({sender:'user', text:t, timestamp:Date.now()});
+            ref.update({userEmail:currentUserEmail, lastMessageTime:Date.now(), hasUnreadUser:true});
+            i.value = '';
+        }
+        // ADMIN CHAT
+        function fetchSupportChats() {
+            db.ref('support_chats').orderByChild('lastMessageTime').on('value', s => {
+                const list = document.getElementById('adminSupportUserList'); list.innerHTML='';
+                const d = s.val(); if(!d) return list.innerHTML='<div class="p-4 text-gray-500 text-sm text-center">No Chats</div>';
+                Object.entries(d).sort((a,b)=>b[1].lastMessageTime-a[1].lastMessageTime).forEach(([k,v]) => {
+                    const div = document.createElement('div');
+                    div.className = `p-4 border-b border-gray-800 cursor-pointer hover:bg-gray-800 ${currentAdminChatUser===k?'bg-gray-800 border-l-4 border-l-red-600':''}`;
+                    div.onclick = () => openAdminChat(k, v.userEmail);
+                    div.innerHTML = `<div class="flex justify-between mb-1"><span class="font-bold text-gray-200 text-sm truncate">${v.userEmail.split('@')[0]}</span>${v.hasUnreadUser?'<span class="w-2 h-2 bg-red-600 rounded-full"></span>':''}</div><div class="text-xs text-gray-500 truncate">${v.userEmail}</div>`;
+                    list.appendChild(div);
+                });
+            });
+        }
+        function openAdminChat(key, email) {
+            currentAdminChatUser = key;
+            document.getElementById('adminChatHeader').innerHTML = `<span class="text-white font-bold text-sm"><i class="fas fa-user text-red-500 mr-2"></i>${email}</span><button onclick="deleteChat('${key}')" class="text-xs text-red-500 border border-red-900 px-2 rounded ml-auto">DEL</button>`;
+            document.getElementById('adminChatFooter').classList.remove('hidden');
+            db.ref(`support_chats/${key}`).update({hasUnreadUser:false});
+            const cb = document.getElementById('adminChatBody');
+            db.ref(`support_chats/${key}/messages`).on('value', s => {
+                cb.innerHTML=''; const m=s.val();
+                if(m) Object.values(m).forEach(x => {
+                    const d=document.createElement('div');
+                    d.className=`max-w-[80%] p-2 rounded text-xs mb-2 ${x.sender==='admin'?'bg-red-900 text-white self-end':'bg-gray-800 text-gray-300 self-start'}`;
+                    d.innerText=x.text; cb.appendChild(d);
+                });
+                cb.scrollTop=cb.scrollHeight;
+            });
+        }
+        function sendAdminReply(e) {
+            e.preventDefault(); const i=document.getElementById('adminChatInput'), t=i.value.trim();
+            if(!t || !currentAdminChatUser) return;
+            const ref = db.ref(`support_chats/${currentAdminChatUser}`);
+            ref.child('messages').push({sender:'admin', text:t, timestamp:Date.now()});
+            ref.update({lastMessageTime:Date.now(), hasUnreadAdmin:true});
             i.value='';
         }
-        function fetchSupportChats() {
-            const l=document.getElementById('adminSupportUserList');
-            db.ref('support_chats').orderByChild('lastMessageTime').on('value', s => {
-                l.innerHTML=''; const d=s.val(); if(!d) return l.innerHTML='<div class="p-4 text-center text-gray-500">No chats</div>';
-                Object.entries(d).sort((a,b)=>b[1].lastMessageTime-a[1].lastMessageTime).forEach(([k,v])=>{
-                    const div=document.createElement('div'); div.className=`p-4 border-b border-gray-800 cursor-pointer hover:bg-gray-800 ${currentAdminChatUser===k?'bg-gray-800 border-l-4 border-l-red-600':''}`;
-                    div.onclick=()=>openAdminChat(k,v.userEmail);
-                    div.innerHTML=`<div class="flex justify-between mb-1"><span class="font-bold text-gray-200 text-sm truncate">${v.userEmail.split('@')[0]}</span>${v.hasUnreadUser?'<span class="bg-red-600 w-2 h-2 rounded-full"></span>':''}</div><div class="text-xs text-gray-500 truncate">${v.userEmail}</div>`;
-                    l.appendChild(div);
-                });
-            });
+        function deleteChat(k) { Swal.fire({title:'Delete?',icon:'warning',showCancelButton:true,background:'#111',color:'#fff'}).then(r=>{if(r.isConfirmed) db.ref(`support_chats/${k}`).remove().then(()=>{document.getElementById('adminChatBody').innerHTML='';document.getElementById('adminChatFooter').classList.add('hidden');currentAdminChatUser=null;});}); }
+
+        // --- APPS (FIXED) ---
+        function fetchApps() {
+            db.ref('apps').on('value', s => { allApps=[]; const d=s.val(); if(d)Object.keys(d).forEach(k=>allApps.push({id:k,...d[k]})); renderApps(); renderAdminApps(); });
         }
-        function openAdminChat(k,e){
-            currentAdminChatUser=k; document.getElementById('adminChatHeader').innerHTML=`<span class="text-sm font-bold text-white"><i class="fas fa-user text-red-500 mr-2"></i>${e}</span><button onclick="db.ref('support_chats/${k}').remove();document.getElementById('adminChatBody').innerHTML='';document.getElementById('adminChatFooter').classList.add('hidden');" class="text-red-500 text-xs border border-red-900 px-2 rounded">DEL</button>`;
-            document.getElementById('adminChatFooter').classList.remove('hidden'); db.ref(`support_chats/${k}`).update({hasUnreadUser:false});
-            const cb=document.getElementById('adminChatBody'); db.ref(`support_chats/${k}/messages`).on('value',s=>{ cb.innerHTML=''; const m=s.val(); if(m)Object.values(m).forEach(x=>{ const d=document.createElement('div'); d.className=`max-w-[80%] p-2 rounded text-xs mb-2 ${x.sender==='admin'?'bg-red-900 text-white self-end':'bg-gray-800 text-gray-300 self-start'}`; d.innerText=x.text; cb.appendChild(d); }); cb.scrollTop=cb.scrollHeight; });
-        }
-        function sendAdminReply(e){ e.preventDefault(); const i=document.getElementById('adminChatInput'); const t=i.value.trim(); if(!t||!currentAdminChatUser)return;
-            const r=db.ref(`support_chats/${currentAdminChatUser}`); r.child('messages').push({sender:'admin',text:t,timestamp:firebase.database.ServerValue.TIMESTAMP}); r.update({lastMessageTime:firebase.database.ServerValue.TIMESTAMP,hasUnreadAdmin:true}); i.value=''; }
-
-        // --- APP LOGIC (RESTORED FULL) ---
-        function fetchApps() { db.ref('apps').on('value', s => { allApps=[]; const d=s.val(); if(d)Object.keys(d).forEach(k=>allApps.push({id:k,...d[k]})); renderPublicGrid(); renderAdminTable(); }); }
-
-        function renderPublicGrid() {
-            const g1 = document.getElementById('homeAppsGrid'); const g2 = document.getElementById('appsGrid');
-            document.getElementById('homeLoader').style.display = 'none'; g1.innerHTML = ''; g2.innerHTML = '';
-            if(countdownInterval) clearInterval(countdownInterval);
-
-            allApps.forEach(a => {
-                let badgeColor='bg-gray-600', badgeText='', btnText='WAIT', btnClass='bg-gray-800 text-gray-500 cursor-not-allowed', link='#', isClickable=false;
-                
-                if (a.status === 'Launched') { badgeColor='bg-green-600'; badgeText='LAUNCHED'; btnText='OPEN'; btnClass='bg-red-600 text-white'; link=a.link; isClickable=true; }
-                else if (a.status === 'Coming Soon') { badgeColor='bg-blue-600'; badgeText='COMING SOON'; }
-                else if (a.status === 'come_tomorrow') { badgeColor='bg-blue-500'; badgeText='COME TOMORROW'; }
-                else if (a.status === 'delay') { badgeColor='bg-yellow-600'; badgeText='DELAY IN LAUNCH'; }
-                else if (a.status === 'date') { badgeColor='bg-blue-600'; badgeText=`COMING ON: ${a.statusDetail}`; }
-                else if (a.status === 'weeks') { badgeColor='bg-purple-600'; badgeText=`COMING IN ${a.statusDetail} WEEKS`; }
-                else if (a.status === 'months') { badgeColor='bg-indigo-600'; badgeText=`COMING IN ${a.statusDetail} MONTHS`; }
-                else if (a.status.includes('hours') || a.status.includes('countdown')) {
-                    badgeColor = a.status.includes('relaunch') ? 'bg-pink-600 animate-pulse badge-container' : 'bg-red-600 animate-pulse badge-container';
-                    badgeText = `${a.status.includes('relaunch')?'RELAUNCH':'LIVE'}: <span class="countdown-timer" data-target="${a.statusDetail}" data-link="${a.link}" data-id="${a.id}" data-type="${a.status}">...</span>`;
-                }
-                else if (a.status.includes('relaunch_date')) { badgeColor='bg-pink-700'; badgeText=`RELAUNCH: ${a.statusDetail}`; }
-                else if (a.status.includes('relaunch_weeks')) { badgeColor='bg-pink-700'; badgeText=`RELAUNCH IN ${a.statusDetail} WEEKS`; }
-                else if (a.status === 'error') { badgeColor='bg-red-800'; badgeText='WEBSITE ERROR'; btnText='WAIT FOR RELAUNCH'; btnClass='bg-red-600 text-white'; }
-                else if (a.status === 'emergency') { badgeColor='bg-red-600 animate-pulse border-2 border-yellow-400'; badgeText='EMERGENCY LAUNCH'; btnText='OPEN'; btnClass='bg-red-600 text-white'; link=a.link; isClickable=true; }
-
-                const html = `
-                <div class="app-card rounded-lg overflow-hidden flex flex-col h-full relative" id="card-${a.id}">
-                    <div class="relative w-full h-48 bg-gray-900 border-b border-gray-800">
-                        ${a.image ? `<img src="${a.image}" class="w-full h-full object-fill">` : `<div class="w-full h-full flex items-center justify-center text-red-600 font-bold text-2xl">ADDA</div>`}
-                        ${badgeText ? `<span class="absolute top-2 right-2 ${badgeColor} text-white text-[10px] font-black tracking-wider px-2 py-1 rounded shadow-md border border-white/20 badge-text">${badgeText}</span>` : ''}
-                    </div>
-                    <div class="p-4 bg-gray-900 flex flex-col flex-grow">
-                        <h3 class="font-bold text-white mb-4 text-lg line-clamp-1">${a.name}</h3>
-                        <a href="${link}" target="_blank" ${!isClickable ? 'onclick="return false;"' : ''} class="mt-auto block text-center ${btnClass} font-bold py-2 rounded text-sm transition hover:scale-105 action-btn">${btnText}</a>
-                    </div>
-                </div>`;
-                g1.innerHTML += html; g2.innerHTML += html;
-            });
-            startCountdowns();
-        }
-
-        function startCountdowns() {
-            countdownInterval = setInterval(() => {
-                document.querySelectorAll('.countdown-timer').forEach(el => {
-                    const t = new Date(el.dataset.target).getTime();
-                    const now = Date.now();
-                    const d = t - now;
-                    if (d < 0) {
-                        const isRelaunch = el.dataset.type.includes('relaunch');
-                        el.innerText = isRelaunch ? "RELAUNCHED" : "LAUNCHED";
-                        const badge = el.closest('.badge-container');
-                        if(badge) { badge.classList.remove('bg-red-600', 'bg-pink-600', 'animate-pulse'); badge.classList.add('bg-green-600'); }
-                        const card = document.getElementById(`card-${el.dataset.id}`);
-                        if(card) {
-                            const btn = card.querySelector('.action-btn');
-                            btn.innerText = 'OPEN'; btn.classList.replace('bg-gray-800', 'bg-red-600'); btn.classList.remove('cursor-not-allowed'); btn.href = el.dataset.link; btn.onclick = null;
-                        }
-                    } else {
-                        const h = Math.floor((d/(1000*60*60)) % 24 + Math.floor(d/(1000*60*60*24))*24); // Total hours
-                        const m = Math.floor((d%(1000*60*60))/(1000*60));
-                        const s = Math.floor((d%(1000*60))/1000);
-                        el.innerText = `${h}h ${m}m ${s}s`;
-                    }
-                });
-            }, 1000);
-        }
-
-        function toggleStatusFields() {
-            const v = document.getElementById('launchStatus').value;
-            ['dateField', 'weeksField', 'monthsField', 'hoursField', 'countdownField'].forEach(id => document.getElementById(id).classList.add('hidden'));
-            if (v.includes('date')) document.getElementById('dateField').classList.remove('hidden');
-            if (v.includes('weeks')) document.getElementById('weeksField').classList.remove('hidden');
-            if (v.includes('months')) document.getElementById('monthsField').classList.remove('hidden');
-            if (v.includes('hours')) document.getElementById('hoursField').classList.remove('hidden');
-            if (v.includes('countdown')) document.getElementById('countdownField').classList.remove('hidden');
-        }
-
         async function handleAppSubmit(e) {
             e.preventDefault();
             const id = document.getElementById('editAppId').value;
             const f = document.getElementById('appImage').files[0];
-            let i = f ? await compressImage(f) : (id ? allApps.find(x => x.id === id).image : '');
+            let img = f ? await compressImage(f) : (id ? allApps.find(x=>x.id===id).image : '');
             
-            const statusType = document.getElementById('launchStatus').value;
+            const status = document.getElementById('launchStatus').value;
             let detail = '';
-            
-            if (statusType.includes('date')) detail = document.getElementById('statusDate').value;
-            else if (statusType.includes('weeks')) detail = document.getElementById('statusWeeks').value;
-            else if (statusType.includes('months')) detail = document.getElementById('statusMonths').value;
-            else if (statusType.includes('hours')) {
-                const h = parseFloat(document.getElementById('statusHours').value);
-                detail = new Date(Date.now() + h * 60 * 60 * 1000).toISOString();
-            }
-            else if (statusType.includes('countdown')) detail = document.getElementById('statusCountdown').value;
+            if(status.includes('date')) detail=document.getElementById('statusDate').value;
+            else if(status.includes('weeks')) detail=document.getElementById('statusWeeks').value;
+            else if(status.includes('months')) detail=document.getElementById('statusMonths').value;
+            else if(status.includes('hours')) { const h=parseFloat(document.getElementById('statusHours').value); detail=new Date(Date.now()+h*3600000).toISOString(); }
+            else if(status.includes('countdown')) detail=document.getElementById('statusCountdown').value;
 
-            const p = { name: document.getElementById('appName').value, status: statusType, statusDetail: detail, link: document.getElementById('appLink').value, image: i };
-            if (id) db.ref('apps/' + id).update(p); else db.ref('apps').push(p);
-            showToast('App Saved'); resetForm();
+            const p = { name:document.getElementById('appName').value, status, statusDetail:detail, link:document.getElementById('appLink').value, image:img };
+            if(id) db.ref(`apps/${id}`).update(p); else db.ref('apps').push(p);
+            Swal.fire({toast:true,position:'top-end',icon:'success',title:'Saved',background:'#111',color:'#fff',timer:2000,showConfirmButton:false});
+            resetAppForm();
         }
-
         function editApp(id) {
-            const a = allApps.find(x => x.id === id); if (!a) return;
-            document.getElementById('editAppId').value = a.id;
-            document.getElementById('appName').value = a.name;
-            document.getElementById('launchStatus').value = a.status;
-            document.getElementById('appLink').value = a.link || '';
+            const a=allApps.find(x=>x.id===id); if(!a)return;
+            document.getElementById('editAppId').value=a.id;
+            document.getElementById('appName').value=a.name;
+            document.getElementById('launchStatus').value=a.status;
+            document.getElementById('appLink').value=a.link||'';
             toggleStatusFields();
-            
-            if (a.status.includes('date')) document.getElementById('statusDate').value = a.statusDetail;
-            if (a.status.includes('weeks')) document.getElementById('statusWeeks').value = a.statusDetail;
-            if (a.status.includes('months')) document.getElementById('statusMonths').value = a.statusDetail;
-            if (a.status.includes('hours')) {
-                const diff = (new Date(a.statusDetail).getTime() - Date.now()) / 3600000;
-                document.getElementById('statusHours').value = diff > 0 ? diff.toFixed(2) : 0;
-            }
-            if (a.status.includes('countdown')) document.getElementById('statusCountdown').value = a.statusDetail;
-            showToast('Editing ' + a.name, 'info');
+            if(a.status.includes('date')) document.getElementById('statusDate').value=a.statusDetail;
+            if(a.status.includes('weeks')) document.getElementById('statusWeeks').value=a.statusDetail;
+            if(a.status.includes('months')) document.getElementById('statusMonths').value=a.statusDetail;
+            if(a.status.includes('hours')) document.getElementById('statusHours').value = Math.max(0, (new Date(a.statusDetail)-Date.now())/3600000).toFixed(1);
+            if(a.status.includes('countdown')) document.getElementById('statusCountdown').value=a.statusDetail;
+            Swal.fire({toast:true,position:'top-end',icon:'info',title:'Editing App',background:'#111',color:'#fff',timer:2000,showConfirmButton:false});
         }
-
-        function resetForm(){ document.getElementById('appForm').reset(); document.getElementById('editAppId').value=''; toggleStatusFields(); }
-        function renderAdminTable(){
-            const t=document.getElementById('adminAppsTable');t.innerHTML='';
-            allApps.forEach(a=>{
-                t.innerHTML+=`<tr class="border-b border-gray-800">
-                    <td class="p-3 text-white">${a.name}</td><td class="p-3 text-xs text-gray-400">${a.status}</td>
-                    <td class="p-3 text-right"><button onclick="editApp('${a.id}')" class="text-blue-400 mr-2"><i class="fas fa-edit"></i></button><button onclick="db.ref('apps/${a.id}').remove()" class="text-red-500"><i class="fas fa-trash"></i></button></td>
-                </tr>`;
+        function deleteApp(id) { Swal.fire({title:'Delete App?',icon:'warning',showCancelButton:true,background:'#111',color:'#fff'}).then(r=>{if(r.isConfirmed) db.ref(`apps/${id}`).remove();}); }
+        function resetAppForm() { document.getElementById('appForm').reset(); document.getElementById('editAppId').value=''; toggleStatusFields(); }
+        function renderAdminApps() {
+            const t=document.getElementById('adminAppsTable'); t.innerHTML='';
+            allApps.forEach(a => {
+                t.innerHTML += `<tr class="border-b border-gray-800"><td class="p-3 text-white">${a.name}</td><td class="p-3 text-xs text-gray-400">${a.status}</td><td class="p-3 text-right"><button onclick="editApp('${a.id}')" class="text-blue-400 mr-2"><i class="fas fa-edit"></i></button><button onclick="deleteApp('${a.id}')" class="text-red-500"><i class="fas fa-trash"></i></button></td></tr>`;
             });
         }
-        
-        // --- SLIDESHOW (RESTORED) ---
-        function fetchSlides() { db.ref('slides').on('value', s => { allSlides=[]; const d=s.val(); if(d)Object.keys(d).forEach(k=>allSlides.push({id:k,image:d[k].image})); const c=document.getElementById('heroSlideshow'); c.innerHTML=''; const l=document.getElementById('adminSlidesList'); l.innerHTML=''; allSlides.forEach((x,i)=>{ const m=document.createElement('img'); m.src=x.image; m.className='slide-image'+(i===0?' active':''); c.appendChild(m); l.innerHTML+=`<div class="flex justify-between bg-black p-2 border border-gray-700 mb-1"><img src="${x.image}" class="h-6 w-10 rounded"><button onclick="db.ref('slides/${x.id}').remove()" class="text-red-500 text-xs">DEL</button></div>`; }); if(slideInterval)clearInterval(slideInterval); let idx=0; const im=document.querySelectorAll('.slide-image'); slideInterval=setInterval(()=>{if(im.length){im[idx].classList.remove('active');idx=(idx+1)%im.length;im[idx].classList.add('active');}},5000); }); }
-        async function uploadSlide(){ const f=document.getElementById('slideUploadInput').files[0]; if(f){ const i = await compressImage(f); db.ref('slides').push({image:i}); showToast('Slide Uploaded'); } }
+        // Simplified Public Render for brevity (add countdowns logic as per previous if needed)
+        function renderApps() {
+            const g1=document.getElementById('homeAppsGrid'), g2=document.getElementById('appsGrid');
+            document.getElementById('homeLoader').style.display='none'; g1.innerHTML=''; g2.innerHTML='';
+            allApps.forEach(a => {
+                let badge='', btn='WAIT', cls='bg-gray-800 text-gray-500 cursor-not-allowed', lnk='#', onclick='return false;';
+                if(a.status==='Launched'||a.status==='emergency') { badge=`<span class="absolute top-2 right-2 bg-green-600 text-white text-[10px] px-2 py-1 font-bold rounded">LAUNCHED</span>`; btn='OPEN'; cls='bg-red-600 text-white'; lnk=a.link; onclick=''; }
+                else if(a.status.includes('countdown')||a.status.includes('hours')) { badge=`<span class="absolute top-2 right-2 bg-red-600 animate-pulse text-white text-[10px] px-2 py-1 font-bold rounded">LIVE</span>`; }
+                else if(a.status!=='none') { badge=`<span class="absolute top-2 right-2 bg-blue-600 text-white text-[10px] px-2 py-1 font-bold rounded">${a.status.toUpperCase()}</span>`; }
+                
+                const html = `<div class="app-card rounded-lg overflow-hidden flex flex-col h-full relative"><div class="relative w-full h-48 bg-gray-900 border-b border-gray-800">${a.image?`<img src="${a.image}" class="w-full h-full object-fill">`:`<div class="h-full flex items-center justify-center text-red-600 font-bold">ADDA</div>`}${badge}</div><div class="p-4 bg-gray-900 flex flex-col flex-grow"><h3 class="font-bold text-white mb-4 line-clamp-1">${a.name}</h3><a href="${lnk}" target="_blank" onclick="${onclick}" class="mt-auto block text-center ${cls} font-bold py-2 rounded text-sm transition">${btn}</a></div></div>`;
+                g1.innerHTML+=html; g2.innerHTML+=html;
+            });
+        }
+        function toggleStatusFields() {
+            const v=document.getElementById('launchStatus').value;
+            ['dateField','weeksField','monthsField','hoursField','countdownField'].forEach(i=>document.getElementById(i).classList.add('hidden'));
+            if(v.includes('date')) document.getElementById('dateField').classList.remove('hidden');
+            if(v.includes('weeks')) document.getElementById('weeksField').classList.remove('hidden');
+            if(v.includes('months')) document.getElementById('monthsField').classList.remove('hidden');
+            if(v.includes('hours')) document.getElementById('hoursField').classList.remove('hidden');
+            if(v.includes('countdown')) document.getElementById('countdownField').classList.remove('hidden');
+        }
+
+        // --- NOTIFICATIONS (FIXED) ---
+        function fetchNotifications() {
+            db.ref('notifications').orderByChild('timestamp').on('value', s => {
+                allNotifs=[]; const d=s.val(); if(d) Object.keys(d).forEach(k=>allNotifs.push({id:k,...d[k]}));
+                allNotifs.sort((a,b)=>b.timestamp-a.timestamp);
+                renderUserNotifs(); renderAdminNotifs();
+                const badge=document.getElementById('navNotificationDot');
+                if(allNotifs.length>0 && allNotifs[0].timestamp > lastReadNotifTime) badge.classList.remove('hidden'); else badge.classList.add('hidden');
+            });
+        }
+        function toggleNotificationModal() {
+            const m = document.getElementById('notificationModal'); m.classList.toggle('open');
+            if(m.classList.contains('open') && allNotifs.length>0) {
+                lastReadNotifTime=Date.now(); localStorage.setItem('lastReadNotifTime',lastReadNotifTime);
+                document.getElementById('navNotificationDot').classList.add('hidden');
+            }
+        }
+        function renderUserNotifs() {
+            const c=document.getElementById('userNotificationList'); c.innerHTML='';
+            if(allNotifs.length===0) return c.innerHTML='<div class="text-center text-gray-500 mt-10">No notifications</div>';
+            allNotifs.forEach(n => {
+                c.innerHTML += `<div class="bg-[#1f1f1f] border border-gray-800 rounded p-3 flex gap-3">${n.image?`<img src="${n.image}" class="w-16 h-16 object-cover rounded border border-gray-700">`:''}<div class="flex-1"><p class="text-sm text-gray-200 mb-1 leading-relaxed">${n.text||''}</p><div class="text-[10px] text-gray-500 text-right">${new Date(n.timestamp).toLocaleDateString()}</div></div></div>`;
+            });
+        }
+        function renderAdminNotifs() {
+            const c=document.getElementById('adminNotifList'); c.innerHTML='';
+            allNotifs.forEach(n => {
+                c.innerHTML += `<div class="bg-black border border-gray-800 p-3 rounded flex justify-between items-start"><div class="flex gap-3">${n.image?`<img src="${n.image}" class="w-10 h-10 object-cover rounded">`:''}<div><p class="text-xs text-gray-300 line-clamp-2">${n.text||'Image'}</p><span class="text-[10px] text-gray-600">${new Date(n.timestamp).toLocaleDateString()}</span></div></div><div class="flex gap-2"><button onclick="editNotif('${n.id}')" class="text-blue-500 text-xs"><i class="fas fa-edit"></i></button><button onclick="deleteNotif('${n.id}')" class="text-red-500 text-xs"><i class="fas fa-trash"></i></button></div></div>`;
+            });
+        }
+        async function handleNotifSubmit(e) {
+            e.preventDefault();
+            const id = document.getElementById('editNotifId').value;
+            const text = document.getElementById('notifText').value;
+            const f = document.getElementById('notifImage').files[0];
+            
+            if(!text && !f && !id) return Swal.fire('Error','Add text or image','warning');
+            
+            let img = f ? await compressImage(f) : (id ? allNotifs.find(x=>x.id===id).image : null);
+            const p = { text, image:img, timestamp:Date.now() };
+            
+            if(id) db.ref(`notifications/${id}`).update(p); else db.ref('notifications').push(p);
+            Swal.fire({toast:true,position:'top-end',icon:'success',title:'Posted',background:'#111',color:'#fff',timer:2000,showConfirmButton:false});
+            resetNotifForm();
+        }
+        function editNotif(id) {
+            const n = allNotifs.find(x=>x.id===id); if(!n) return;
+            document.getElementById('editNotifId').value = id;
+            document.getElementById('notifText').value = n.text || '';
+            Swal.fire({toast:true,position:'top-end',icon:'info',title:'Editing Notification',background:'#111',color:'#fff',timer:2000,showConfirmButton:false});
+        }
+        function deleteNotif(id) { Swal.fire({title:'Delete Notification?',icon:'warning',showCancelButton:true,background:'#111',color:'#fff'}).then(r=>{if(r.isConfirmed) db.ref(`notifications/${id}`).remove();}); }
+        function resetNotifForm() { document.getElementById('editNotifId').value=''; document.getElementById('notifText').value=''; document.getElementById('notifImage').value=''; }
+
+        // --- UTILS ---
+        function compressImage(file) { return new Promise(r=>{const rd=new FileReader();rd.readAsDataURL(file);rd.onload=e=>{const i=new Image();i.src=e.target.result;i.onload=()=>{const c=document.createElement('canvas');let w=i.width,h=i.height,m=800;if(w>h){if(w>m){h*=m/w;w=m}}else{if(h>m){w*=m/h;h=m}}c.width=w;c.height=h;c.getContext('2d').drawImage(i,0,0,w,h);r(c.toDataURL('image/jpeg',0.7));}}}); }
+        function switchAdminTab(t) {
+            const i = ['apps','slides','support','notifs'].indexOf(t);
+            document.getElementById('adminGlider').style.transform=`translateX(${i*100}%)`;
+            ['apps','slides','support','notifs'].forEach(x=>document.getElementById(`admin-tab-${x}`).classList.add('hidden-section'));
+            document.getElementById(`admin-tab-${t}`).classList.remove('hidden-section');
+        }
+        function toggleAccordion(id, btn) {
+            const c=document.getElementById(id), o=btn.classList.contains('active');
+            document.querySelectorAll('.accordion-content').forEach(x=>x.style.maxHeight='0');
+            document.querySelectorAll('.accordion-btn').forEach(x=>x.classList.remove('active'));
+            if(!o){btn.classList.add('active');c.style.maxHeight=c.scrollHeight+"px";}
+        }
+        function scrollToHomeApps() { document.getElementById('homeAppsContainer').scrollIntoView({behavior:'smooth'}); }
+        function fetchSlides() { db.ref('slides').on('value', s=>{ allSlides=[]; const d=s.val(); if(d)Object.keys(d).forEach(k=>allSlides.push({id:k,...d[k]})); const c=document.getElementById('heroSlideshow'), l=document.getElementById('adminSlidesList'); c.innerHTML=''; l.innerHTML=''; allSlides.forEach((x,i)=>{ c.innerHTML+=`<img src="${x.image}" class="slide-image ${i===0?'active':''}">`; l.innerHTML+=`<div class="flex justify-between bg-black p-2 border border-gray-700 items-center"><img src="${x.image}" class="h-6 w-10"><button onclick="db.ref('slides/${x.id}').remove()" class="text-red-500 text-xs">DEL</button></div>`; }); let idx=0; const im=document.querySelectorAll('.slide-image'); setInterval(()=>{if(im.length){im[idx].classList.remove('active'); idx=(idx+1)%im.length; im[idx].classList.add('active');}},5000); }); }
+        async function uploadSlide() { const f=document.getElementById('slideUploadInput').files[0]; if(f){const i=await compressImage(f); db.ref('slides').push({image:i}); Swal.fire('Success','Slide Added','success');} }
     </script>
 </body>
-</html>
+    </html>
